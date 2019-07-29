@@ -1,0 +1,76 @@
+<div class="headbar">
+  <h2 class="pull-left header_title">Rental Management Summary</h2>
+  <div class="col-12 col-md-6 pull-right location_form justify-content-end">
+    <span>Location</span>
+    <form [formGroup]="countryForm">
+      <select formControlName="countryControl">
+        <option [value]="country" *ngFor="let country of countries"> {{country.name}}</option>
+      </select>
+    </form>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-12 col-md-2">
+    <div class="rms_box">
+      <div class="icon_div blue">
+        <mat-icon svgIcon="Todays_Reservation"></mat-icon>
+      </div>
+      <div class="amt-flue float-right">0</div>
+      <h6>Todays Reservation</h6>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-2">
+    <div class="rms_box">
+      <div class="icon_div pink">
+        <mat-icon svgIcon="Todays_Arivals"></mat-icon>
+      </div>
+      <div class="amt-flue float-right">1</div>
+      <h6>Todays Arivals</h6>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-2">
+    <div class="rms_box">
+      <div class="icon_div green">
+        <mat-icon svgIcon="Over_Dues"></mat-icon>
+      </div>
+      <div class="amt-flue float-right">145</div>
+      <h6>Over Dues</h6>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-2">
+    <div class="rms_box">
+      <div class="icon_div orange">
+        <mat-icon svgIcon="Opened_Agreements"></mat-icon>
+      </div>
+      <div class="amt-flue float-right">146</div>
+      <h6>Opened Agreements</h6>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-2">
+    <div class="rms_box">
+      <div class="icon_div yellow">
+        <mat-icon svgIcon="Pending_Payment"></mat-icon>
+      </div>
+      <div class="amt-flue float-right">146</div>
+      <h6>Pending Payment</h6>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-2">
+    <div class="rms_box">
+      <div class="icon_div picoc">
+        <mat-icon svgIcon="Service_Alerts"></mat-icon>
+      </div>
+      <div class="amt-flue float-right">57</div>
+      <h6>Service Alerts</h6>
+    </div>
+  </div>
+</div>

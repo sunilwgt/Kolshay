@@ -1,0 +1,117 @@
+<!-- sunil
+
+<div *ngFor="let r of registeration">
+
+{{r.data.name}}{{r.data.gender}}{{r.data.age}}
+</div> -->
+<!-- <ngx-spinner
+bdColor = "rgba(51, 51, 51, 0.8)"
+size = "large"
+color = "#934d4d"
+type = "ball-8bits"></ngx-spinner> -->
+
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+<div class="row">
+  <div class="row col-sm-12">
+    <div class="offset-3" style="color:blue">
+      <b>
+        <h3>Booking</h3>
+        <!-- <hr height="20px" color="red"> -->
+      </b>
+    </div>
+  </div>
+  <div class="row col-sm-12">
+    <div class="col-sm-3">
+      <mat-form-field class="example-full-width">
+        <input [formControl]="fdate" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="From">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>&nbsp;
+    <div class="col-sm-3">
+      <mat-form-field class="example-full-width">
+        <input [formControl]="tdate" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker1" placeholder="To">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn btn-primary" type="button" (click)="onsearch()">Search</button>
+    </div>
+    <div class="col-sm-3-md-3-lg-3">
+      <button class="btn btn-success" type="button" routerLink="../add">Add Booking</button>
+      <!-- <button class="btn btn-success" type="button" (click)="onaddpatient()">Add Patient</button> -->
+
+    </div>
+  </div>
+</div>
+<!-- <hr height="20px" color="red"> -->
+<div>
+  <table mat-table [dataSource]="registeration" matSort class="mat-elevation-z8">
+    <ng-container>
+    </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="regno">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Reg No. </th>
+      <td mat-cell *matCellDef="let element"> <a href="javascript:void(0)" (click)="onreglink(element)">{{element.data.pnr}}
+        </a> </td>
+    </ng-container>
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Firstname </th>
+      <td mat-cell *matCellDef="let element"> {{element.data.firstname}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Lastname </th>
+      <td mat-cell *matCellDef="let element"> {{element.data.lastname}} </td>
+    </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+      <td mat-cell *matCellDef="let element"> {{element.data.gender}} </td>
+    </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
+      <td mat-cell *matCellDef="let element"> {{element.data.age}} </td>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.data.phone}} </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="underdoctor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Under doctor </th>
+      <td mat-cell *matCellDef="let element"> {{element.data.doctorunder}} </td>
+    </ng-container> -->
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+      <td mat-cell *matCellDef="let element"> {{element.data.city}} </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="religion">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Religion </th>
+      <td mat-cell *matCellDef="let element"> {{element.data.religion}} </td>
+    </ng-container> -->
+    <ng-container matColumnDef="customColumn">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button class="btn btn-sm btn-info" (click)="onview(element)">View</button>&nbsp;
+        <button mat-button class="btn btn-sm btn-warning" (click)="onedit(element)">Edit</button>&nbsp;
+        <button mat-button class="btn btn-sm btn-danger" (click)="ondelete(element)">Delete</button>
+      </td>
+    </ng-container>
+    <!-- <button pButton type="button" class="btnIcon" icon="pi pi-pencil" (click)="goToEdit(row.id)"></button>
+    <button pButton type="button" class="ui-button-danger btnIcon" icon="pi pi-trash" (click)="delete(row.id)"></button> -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table><br>
+
+  <div style="margin-left:30%; color: red" *ngIf="!showtableheader">
+    <h3>No Data Available!</h3>
+  </div>
+  <div *ngIf="showtableheader">
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

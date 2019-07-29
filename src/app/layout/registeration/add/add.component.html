@@ -1,0 +1,274 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+
+
+<div class="row col-sm-12">
+  <div class="col-sm-2">
+    <button class="btn btn-primary" routerLink="../list">Back</button>
+  </div>
+  <div class="col-sm-10" style="color:blue">
+    <b>
+      <h3>Patient Registeration Form</h3>
+
+    </b>
+  </div>
+  <hr height="20px" color="red" width="100%">
+</div>
+
+
+
+
+
+
+<!-- 
+    <form [formGroup]="registerationAddForm"> 
+        <div class="row col-md-12">
+        <div class="col-md-3" >
+            <mat-form-field appearance="outline">
+                <mat-label>Registeration Number</mat-label>
+                <input readonly matInput placeholder="Registeration Number">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Auto Generated</mat-hint>
+              </mat-form-field>
+        </div>
+        <div class="col-md-3" >
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First Name" formControlName="firstname" required>
+                <mat-error *ngIf="registerationAddForm.controls['firstname'].hasError('required') && registerationAddForm.controls['firstname'].touched">first name requirred</mat-error>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+          </div>
+          <div class="col-md-3" >
+              <mat-form-field appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput placeholder=" Last Name" formControlName="lastname" required>
+                <mat-error *ngIf="registerationAddForm.controls['lastname'].hasError('required') && registerationAddForm.controls['lastname'].touched">last name requirred</mat-error>
+
+                  <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+            </div>
+          </div>
+    </form> -->
+
+
+
+
+
+<form [formGroup]="registerationAddForm">
+  <mat-tab-group [selectedIndex]="selectedIndex">
+    <mat-tab label="Primary Information "> <br>
+      <div class="row col-md-12">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Registeration Number</mat-label>
+            <input readonly matInput placeholder="Registeration Number">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Auto Generated</mat-hint> -->
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" formControlName="firstname" required>
+            <mat-error *ngIf="registerationAddForm.controls['firstname'].hasError('required') && registerationAddForm.controls['firstname'].touched">first
+              name requirred</mat-error>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder=" Last Name" formControlName="lastname" required>
+            <mat-error *ngIf="registerationAddForm.controls['lastname'].hasError('required') && registerationAddForm.controls['lastname'].touched">last
+              name requirred</mat-error>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </div>
+      </div><br>
+      <div class="row col-md-12">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Profession</mat-label>
+            <input matInput placeholder="Profession" formControlName="profession" required>
+            <mat-error *ngIf="registerationAddForm.controls['profession'].hasError('required') && registerationAddForm.controls['profession'].touched">Profession
+              requirred</mat-error>
+
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="Phone" formControlName="phone">
+            <mat-error *ngIf="registerationAddForm.controls['phone'].hasError('required')">Phone requirred</mat-error>
+            <!-- <mat-error *ngIf="registerationAddForm.controls['phone'].hasError('minLength') && registerationAddForm.controls['phone'].touched">Enter Valid Phone Number</mat-error> -->
+            <!-- <mat-error *ngIf="registerationAddForm.controls['phone'].hasError('maxLength')">Enter Valid Phone Number</mat-error> -->
+
+            <div *ngIf="registerationAddForm.get('phone').hasError('minlength')">
+              <span style="color: red;">Phone Number requied atleast 8 characters.</span>
+            </div>
+            <div *ngIf="registerationAddForm.get('phone').hasError('maxlength')">
+              <span style="color: red;">Phone Number requied only 12 characters.</span>
+            </div>
+            <div *ngIf="registerationAddForm.get('phone').hasError('pattern')">
+              <span style="color: red;">Only Numbers are allowed.</span>
+            </div>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Age</mat-label>
+            <input matInput type="number" placeholder=" Age" formControlName="age" required>
+            <mat-error *ngIf="registerationAddForm.controls['age'].hasError('required') && registerationAddForm.controls['age'].touched">Age
+              requirred</mat-error>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </div>
+      </div><br>
+
+      <div class="row col-md-12">
+        <div class="col-md-4" style="font-weight: 300;">
+          <mat-label>Select Gender</mat-label><br>
+          <mat-radio-group aria-label="Select an option" labelPosition="before" formControlName="gender">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="Others">Others</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-md-4" style="font-weight: 300;">
+          <mat-label>Is Bpl Holder</mat-label><br>
+          <mat-radio-group labelPosition="before" aria-label="Select an option" formControlName="bpl">
+            <mat-radio-button value="true">Yes</mat-radio-button>
+            <mat-radio-button value="false">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Doctor Under</mat-label>
+            <mat-select formControlName="doctorunder">
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <br>
+      <div class="row col-md-12">
+        <div class="col-md-6">
+          <mat-label>Notes</mat-label><br>
+          <mat-form-field style="min-width: 100%;">
+            <textarea matInput placeholder="Textarea" formControlName="notes"></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6" style="margin-right:5px;">
+          <button class="btn btn-primary" (click)="nextstep()">Next Step</button>
+        </div>
+      </div>
+    </mat-tab>
+
+
+    <!-- contact details -->
+
+    <mat-tab label="Contact Details">
+      <br>
+
+      <div class="row col-md-12">
+        <div class="col-md-12">
+          <mat-label>Address</mat-label><br>
+          <mat-form-field style="min-width: 100%;">
+            <textarea matInput placeholder="Address" formControlName="Address"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row col-md-12">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>City/Village</mat-label>
+            <input matInput placeholder="City/Village" formControlName="city">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Police Station </mat-label>
+            <input matInput placeholder="Police Station" formControlName="policestation">
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Post Office</mat-label>
+            <input matInput placeholder="Post Office" formControlName="postoffice">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row col-md-12">
+        <div class="col-md-4">
+          <mat-form-field appearance="outline">
+            <mat-label>District</mat-label>
+            <input matInput placeholder="District" formControlName="district">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Nationality</mat-label>
+            <mat-select formControlName="nationality">
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4">
+          <mat-form-field>
+            <mat-label>Religion</mat-label>
+            <mat-select formControlName="religion">
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row col-md-12">
+        <div class="col-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Emergency Contact Person</mat-label>
+            <input matInput placeholder="Emergency Contact Person" formControlName="emergencyperson">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Emergency Contact Person Phone </mat-label>
+            <input matInput type="number" placeholder="Emergency Contact Person Phone" formControlName="emergencypersonphone">
+          </mat-form-field>
+        </div>
+
+      </div>
+      <br>
+      <div class="row col-md-12">
+        <div class="col-md-3">
+          <button type="button" class="btn btn-success" [disabled]="registerationAddForm.invalid" (click)="onsubmit()">Submit</button>
+        </div>
+      </div><br><br>
+      <div class="row col-md-12"><br>
+        <div class="col-md-3">
+          <button type="button" class="btn btn-primary" (click)="previousStep()">Previous Step</button>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</form>

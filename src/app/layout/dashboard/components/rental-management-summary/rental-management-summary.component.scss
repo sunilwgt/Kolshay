@@ -1,0 +1,92 @@
+.headbar {
+    margin: 5px 0 45px;
+
+    .header_title {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .location_form {
+        display: flex;
+        align-items: center;
+
+        span {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        select {
+            min-width: 230px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            box-shadow: 0 2px 3px #ccc;
+            padding: 5px;
+        }
+    }
+}
+
+.rms_box {
+    border-radius: 5px;
+    box-shadow: 0 0 7px #c6c6c6;
+    position: relative;
+    min-height: 100px;
+    background: #fff;
+
+
+    h6 {
+        margin-top: 6px;
+        font-weight: bold;
+        float: left;
+        margin-left: 15px;
+        display: block;
+        width: 100%;
+    }
+
+    .icon_div {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        position: absolute;
+        left: 15px;
+        top: -25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.blue {
+            background: #4680ff;
+        }
+
+        &.pink {
+            background: #FC6180;
+        }
+
+        &.green {
+            background: #93BE52;
+        }
+
+        &.orange {
+            background: #E24309;
+        }
+
+        &.yellow {
+            background: #FFB64D;
+        }
+
+        &.picoc {
+            background: #62d1f3;
+        }
+
+        mat-icon {
+            width: 52px;
+            height: 52px;
+        }
+    }
+
+    .amt-flue {
+        color:rgb(54, 54, 54);
+        font-size: 2.6rem;
+        font-weight: bold;
+        margin-right: 15px;
+    }
+}

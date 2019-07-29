@@ -1,0 +1,350 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+<div class="row col-sm-12">
+  <div class="col-sm-2">
+    <button class="btn btn-primary" routerLink="../list">Back</button>
+  </div>
+  <div class="col-sm-8" style="color:blue">
+    <b>
+      <h3>Booking Form</h3>
+    </b>
+  </div>
+  <div class="col-md-2">
+    <button type="button" class="btn btn-success" [disabled]="registerationAddForm.invalid" (click)="onsubmit()">Submit</button>
+  </div>
+</div>
+<form [formGroup]="registerationAddForm">
+  <mat-tab-group [selectedIndex]="selectedIndex">
+    <mat-tab label="Booking Information "> <br>
+      <div class="row col-md-12">
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Booking Type</mat-label>
+            <mat-select formControlName="bookingtype">
+              <mat-option *ngFor="let food of bookingtype" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Pickup Date </mat-label>
+            <!-- <input matInput type="number" placeholder="Date Of Birth" formControlName="dob"> -->
+            <input matInput [matDatepicker]="picker" placeholder="Pickup date" formControlName="pickupdate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="registerationAddForm.controls['pickupdate'].hasError('required') && registerationAddForm.controls['pickupdate'].touched">
+              Date Of Birth required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Pickup Location</mat-label>
+            <mat-select formControlName="pickuplocation">
+              <mat-option *ngFor="let food of pickuplocation" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Drop off Date </mat-label>
+            <!-- <input matInput type="number" placeholder="Date Of Birth" formControlName="dob"> -->
+            <input matInput [matDatepicker]="picker2" placeholder="Drop Off date" formControlName="dropofdate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <mat-error *ngIf="registerationAddForm.controls['dropofdate'].hasError('required') && registerationAddForm.controls['dropofdate'].touched">
+              Drop Off Date required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Drop off Location</mat-label>
+            <mat-select formControlName="dropofflocation">
+              <mat-option *ngFor="let food of pickuplocation" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Tariff Group </mat-label>
+            <mat-select formControlName="tariffgroup">
+              <mat-option *ngFor="let food of tariffgroup" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Vehicle </mat-label>
+            <mat-select formControlName="vehicle">
+              <mat-option *ngFor="let food of vehicle" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Customer </mat-label>
+            <mat-select formControlName="customer">
+              <mat-option [value]="c" *ngFor="let c of customer">
+                {{c.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button (click)="searchcustomer()">
+            <mat-icon svgIcon="Add-Customer"></mat-icon>&nbsp;
+          </button>
+        </div>
+      </div>
+    </mat-tab>
+    <!-- Charges  -->
+
+
+
+
+
+
+
+
+    <mat-tab label="Charges">
+      <br>
+      <div class="row col-12 header">
+        <div class="col-4">
+          CHARGES TYPE
+        </div>
+        <div class="col-4">
+          RATE
+        </div>
+        <div class="col-4">
+          CHARGES
+        </div>
+
+      </div><br>
+
+
+      <div class="row col-12">
+        <div class="col-md-4">
+          <mat-label>Rent</mat-label>
+        </div>
+
+        <div class="col-4">
+          <mat-form-field>
+            <mat-label>Per Day</mat-label>
+            <input matInput placeholder="Rent" formControlName="rent" (keyup)="calculateprice('rent')" required>
+            <mat-error *ngIf="registerationAddForm.controls['rent'].hasError('required') && registerationAddForm.controls['rent'].touched">
+              Rent Required</mat-error>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <!-- <mat-label>Charges</mat-label> -->
+            <input matInput placeholder="Total Rent Charges" formControlName="rentcharge" required>
+            <mat-error *ngIf="registerationAddForm.controls['rentcharge'].hasError('required') && registerationAddForm.controls['rentcharge'].touched">
+              Rent Required</mat-error>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row col-12">
+        <div class="col-4">
+          <mat-checkbox value="checkedcdw" (click)="changecdw($event)"> CDW</mat-checkbox>
+        </div>
+
+        <div class="col-4" *ngIf="showcdwcharge" (keyup)="calculateprice('cdwcharge')">
+          <mat-form-field>
+            <mat-label>Per Day</mat-label>
+            <input matInput placeholder="Cdw Per Day" formControlName="cdwperday">
+          </mat-form-field>
+        </div>
+        <div class="col-4" *ngIf="showcdwcharge">
+          <mat-form-field>
+            <input matInput placeholder="Total Cdw Charges" formControlName="cdwtotalcharge">
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <div class="row col-12">
+        <div class="col-4">
+          <mat-checkbox value="checkedpai" (click)="changepai($event)"> PAI</mat-checkbox>
+        </div>
+        <div class="col-4" *ngIf="showpaicharge" (keyup)="calculateprice('paicharge')">
+          <mat-form-field>
+            <mat-label> Per Day</mat-label>
+            <input matInput placeholder="PAI Per Day" formControlName="paiperday">
+          </mat-form-field>
+        </div>
+        <div class="col-4" *ngIf="showpaicharge">
+          <mat-form-field>
+            <input matInput placeholder="Total Pai Charges" formControlName="paitotalcharge">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row col-12">
+        <div class="col-md-4">
+          <mat-label>FUEL</mat-label>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-label>Per Day</mat-label>
+            <input matInput placeholder="Fuel" (keyup)="calculateprice('fuelcharge')" formControlName="fuel">
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <input matInput placeholder="Total Fuel Charges" formControlName="fuelcharge" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+      <div class="row col-12">
+        <div class="col-4">
+          <mat-label> Baby Seat</mat-label>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-label> Seat One Time</mat-label>
+            <input matInput placeholder="One Time" (keyup)="calculateprice('babyseatpertime')" formControlName="babyseatpertime">
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <input matInput placeholder=" Total Baby Seat Charges" formControlName="babyseattotalcharge">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row col-12">
+        <div class="col-4">
+          <mat-label> Gps</mat-label>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-label> One Time</mat-label>
+            <input matInput placeholder="PAI Per Day" (keyup)="calculateprice('gpspertime')" formControlName="gpspertime">
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <input matInput placeholder=" Total Gps Charges" formControlName="gpstotalcharge">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row col-12">
+        <div class="col-4">
+          <mat-label> Liability Insurence</mat-label>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-label>One Time</mat-label>
+            <input matInput placeholder="One Time" (keyup)="calculateprice('liabilityinsuranceonetime')"
+              formControlName="liabilityinsuranceonetime">
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <input matInput placeholder="Total Liability Charges" formControlName="liabilityinsurencetotalcharge">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row col-12">
+        <div class="col-md-4">
+          <mat-label>Other</mat-label>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <mat-label>One Time</mat-label>
+            <input matInput placeholder="Others" (keyup)="calculateprice('othersperday')" formControlName="othersperday">
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <input matInput placeholder="Other Charges" formControlName="othercharge">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row col-12">
+        <div class="col-md-4">
+          <mat-label>Discount</mat-label>
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <input matInput placeholder="Total Discount" formControlName="discountcharge">
+          </mat-form-field>
+          <button (click)="applydiscount('discount')"> Apply</button>
+        </div>
+      </div>
+
+      <div class="row col-12">
+        <div class="col-4">
+          <mat-label><b>Total Charges</b></mat-label>
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <input matInput placeholder="Total Charges" readonly formControlName="totalcharge">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row col-12">
+        <div class="col-4">
+          <mat-label><b>Tax 10%</b> </mat-label>
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <input matInput placeholder="Total Tax Charges" readonly formControlName="taxcharge">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row col-12">
+        <div class="col-4">
+          <mat-label><b>Grand Total</b></mat-label>
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+          <mat-form-field>
+            <input matInput placeholder="Grand Total" readonly formControlName="grandtotal">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+    </mat-tab>
+
+  </mat-tab-group>
+</form>

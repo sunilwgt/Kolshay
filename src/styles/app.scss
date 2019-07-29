@@ -1,0 +1,116 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/bootstrap";
+@import "spinner";
+@import "utils";
+@import "rtl";
+@import "responsive";
+@import "variable";
+
+
+@media print {
+    .breadcrumb {
+        display: none !important;
+    }
+}
+
+body {
+    background-color: #f5f6f7;
+
+
+    ngb-tabset {
+        margin: 15px 0;
+        padding: 0;
+        border: 0;
+        outline: none;
+        font-size: 0;
+        text-align: left;
+        float: left;
+
+        .nav-tabs {
+            border-bottom: 0;
+            .nav-item {
+                .nav-link {
+                    margin: 0 5px 5px 0;
+                    border-radius: 5px;
+                    background: #fff;
+                    box-shadow: 0 2px rgba(0, 0, 0, 0.2);
+                    color: #808080;
+                    opacity: 0.8;
+                    padding: 0 20px;
+                    font-size: 13px;
+                    line-height: 49px;
+                    position: relative;
+                    display: inline-block;
+                    outline: none;
+                    cursor: pointer;
+                    transition: all 0.1s;
+                    -o-transition: all 0.1s;
+                    -ms-transition: all 0.1s;
+                    -moz-transition: all 0.1s;
+                    -webkit-transition: all 0.1s;
+
+                    &.active {
+                        margin-bottom: 0;
+                        padding-bottom: 5px;
+                        border-bottom-right-radius: 0;
+                        border-bottom-left-radius: 0;
+                        color: #2b82d9;
+                        opacity: 1;
+                        background: #fff;                                                  
+                    }
+
+                    
+                }
+            }
+        }
+
+        .tab-pane {
+            min-height: 370px;
+            border-radius: 5px;
+            box-shadow: 0 3px rgba(0, 0, 0, 0.2);
+            background: #fff;
+            text-align: left;
+            list-style: none;
+            position: relative;
+            display: block;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: none;
+            font-size: 13px;
+            padding: 15px;         
+
+            &#tab-preventchange-panel {
+                border-top-left-radius: 0;
+            }
+            &.active {
+                div{
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                    opacity: 1;
+                    -webkit-transform: scale(1,1);
+                    -webkit-transform: rotate(0deg);
+                }
+            }
+
+            div{
+                position: absolute;
+                width: 100%;
+                overflow: auto;
+                padding: 30px 40px 40px;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                opacity: 0;
+                transition: all 0.5s;
+                -o-transition: all 0.5s;
+                -ms-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                -webkit-transition: all 0.5s;
+            }
+        }
+    }
+
+
+}

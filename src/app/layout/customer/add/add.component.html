@@ -1,0 +1,363 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<p-toast [style]="{marginTop: '80px'}" position="top-right"></p-toast>
+
+
+<div class="row col-sm-12">
+  <div class="col-sm-2">
+    <button class="btn btn-primary" routerLink="../list">Back</button>
+  </div>
+  <div class="col-sm-8" style="color:blue">
+    <b>
+      <h3>Customer Registeration Form</h3>
+
+    </b>
+  </div>
+  
+
+    <div class="col-md-2">
+      <button type="button" class="btn btn-success" [disabled]="registerationAddForm.invalid" (click)="onsubmit()">Submit</button>
+    </div>
+  
+  <!-- <hr height="20px" color="red" width="100%"> -->
+</div>
+
+
+
+
+
+
+<!-- 
+    <form [formGroup]="registerationAddForm"> 
+        <div class="row col-md-12">
+        <div class="col-md-3" >
+            <mat-form-field appearance="outline">
+                <mat-label>Registeration Number</mat-label>
+                <input readonly matInput placeholder="Registeration Number">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Auto Generated</mat-hint>
+              </mat-form-field>
+        </div>
+        <div class="col-md-3" >
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First Name" formControlName="firstname" required>
+                <mat-error *ngIf="registerationAddForm.controls['firstname'].hasError('required') && registerationAddForm.controls['firstname'].touched">first name requirred</mat-error>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+          </div>
+          <div class="col-md-3" >
+              <mat-form-field appearance="outline">
+                  <mat-label>Last Name</mat-label>
+                  <input matInput placeholder=" Last Name" formControlName="lastname" required>
+                <mat-error *ngIf="registerationAddForm.controls['lastname'].hasError('required') && registerationAddForm.controls['lastname'].touched">last name requirred</mat-error>
+
+                  <mat-hint>Hint</mat-hint>
+                </mat-form-field>
+            </div>
+          </div>
+    </form> -->
+
+
+
+
+
+<form [formGroup]="registerationAddForm">
+  <mat-tab-group [selectedIndex]="selectedIndex">
+    <mat-tab label="Personal Information "> <br>
+      <div class="row col-md-12">
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Registeration Number</mat-label>
+            <input readonly matInput placeholder="Registeration Number">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <!-- <mat-hint>Auto Generated</mat-hint> -->
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Full Name</mat-label>
+            <input matInput placeholder="Full Name" formControlName="fullname" required>
+            <mat-error *ngIf="registerationAddForm.controls['fullname'].hasError('required') && registerationAddForm.controls['fullname'].touched">
+              Name Required</mat-error>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Mobile </mat-label>
+            <input matInput type="number" placeholder="Mobile" formControlName="mobile">
+            <mat-error *ngIf="registerationAddForm.controls['mobile'].hasError('required') && registerationAddForm.controls['mobile'].touched">
+            Mobile  Number Required</mat-error>
+          </mat-form-field>
+        </div>
+        <!-- <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Home Phone </mat-label>
+                <input matInput type="number" placeholder="Home Phone" formControlName="homephone">
+                <mat-error *ngIf="registerationAddForm.controls['homephone'].hasError('required') && registerationAddForm.controls['homephone'].touched">
+                   Home Phone Requirred</mat-error>
+              </mat-form-field>
+            </div> -->
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Date Of Birth </mat-label>
+            <!-- <input matInput type="number" placeholder="Date Of Birth" formControlName="dob"> -->
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="dob">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+            <mat-error *ngIf="registerationAddForm.controls['dob'].hasError('required') && registerationAddForm.controls['dob'].touched">
+              Date Of Birth required</mat-error>
+          </mat-form-field>
+        </div>
+
+      </div><br>
+
+
+
+
+      <div class="row col-md-12">
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email" required>
+            <mat-error *ngIf="registerationAddForm.controls['email'].hasError('required') && registerationAddForm.controls['email'].touched">
+              Email Required</mat-error>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>City/Village</mat-label>
+            <input matInput placeholder="City/Village" formControlName="city">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Police Station </mat-label>
+            <input matInput placeholder="Police Station" formControlName="policestation">
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Post Office</mat-label>
+            <input matInput placeholder="Post Office" formControlName="postoffice">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row col-md-12">
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>District</mat-label>
+            <input matInput placeholder="District" formControlName="district">
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Nationality</mat-label>
+            <mat-select formControlName="nationality">
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-label>Religion</mat-label>
+            <mat-select formControlName="religion">
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <br>
+
+
+
+
+
+      <div class="row col-md-12">
+        <div class="col-md-12">
+          <!-- <mat-label>Address</mat-label><br> -->
+          <mat-form-field style="min-width: 100%;">
+            <textarea matInput placeholder="Address" formControlName="Address"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </mat-tab>
+
+
+    <!-- contact details -->
+
+    <mat-tab label="Liscence Information">
+      <br>
+
+
+
+      <div class="row col-md-12">
+
+
+
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Liscence Number</mat-label>
+            <input matInput type="number" placeholder=" Liscence Number" formControlName="liscencenumber" required>
+            <mat-error *ngIf="registerationAddForm.controls['liscencenumber'].hasError('required') && registerationAddForm.controls['liscencenumber'].touched">
+            Liscence Number Required</mat-error>
+            <!-- <mat-hint>Hint</mat-hint> -->
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Liscence Issue Date </mat-label>
+            <!-- <input matInput type="number" placeholder="Date Of Birth" formControlName="dob"> -->
+            <input matInput [matDatepicker]="picker1" placeholder="Liscence  Issue Date" formControlName="liscenceissuedate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+            <mat-error *ngIf="registerationAddForm.controls['liscenceissuedate'].hasError('required') && registerationAddForm.controls['liscenceissuedate'].touched">
+              Liscence Issue Date Required</mat-error>
+          </mat-form-field>
+
+        </div>
+        <div class="col-md-3">
+          <mat-form-field appearance="outline">
+            <mat-label>Liscence Expiry Date </mat-label>
+            <!-- <input matInput type="number" placeholder="Date Of Birth" formControlName="dob"> -->
+            <input matInput [matDatepicker]="picke2r" placeholder="Liscence Expiry Date" formControlName="liscenceexpirydate">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+            <mat-error *ngIf="registerationAddForm.controls['liscenceexpirydate'].hasError('required') && registerationAddForm.controls['liscenceexpirydate'].touched">
+              Liscence Expiry Date Required</mat-error>
+          </mat-form-field>
+        </div>
+
+
+      </div>
+
+
+      <br>
+      <!-- <div class="row col-md-12">
+        <div class="col-md-3">
+          <button type="button" class="btn btn-success" [disabled]="registerationAddForm.invalid" (click)="onsubmit()">Submit</button>
+        </div>
+      </div><br><br> -->
+      <!-- <div class="row col-md-12"><br>
+        <div class="col-md-3">
+          <button type="button" class="btn btn-primary" (click)="previousStep()">Previous Step</button>
+        </div>
+      </div> -->
+    </mat-tab>
+
+
+
+    <mat-tab label="Insurance Information">
+        <br>
+        <div class="row col-md-12">
+          <div class="col-md-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Company Name</mat-label>
+              <input matInput type="text" placeholder=" Company Name" formControlName="companyname" required>
+              <mat-error *ngIf="registerationAddForm.controls['companyname'].hasError('required') && registerationAddForm.controls['companyname'].touched">
+                Company Information Required</mat-error>
+              <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Policy Number</mat-label>
+                <input matInput type="number" placeholder="Policy Numbe" formControlName="policynumber" required>
+                <mat-error *ngIf="registerationAddForm.controls['policynumber'].hasError('required') && registerationAddForm.controls['policynumber'].touched">
+                 Policy Number Required</mat-error>
+                <!-- <mat-hint>Hint</mat-hint> -->
+              </mat-form-field>
+            </div>
+          <div class="col-md-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Expiry Date </mat-label>
+              <!-- <input matInput type="number" placeholder="Date Of Birth" formControlName="dob"> -->
+              <input matInput [matDatepicker]="picker3" placeholder="Expiry Date" formControlName="insuranceexpirydate">
+              <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="registerationAddForm.controls['insuranceexpirydate'].hasError('required') && registerationAddForm.controls['insuranceexpirydate'].touched">
+                Liscence Expiry Date Required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-tab>
+
+
+
+      
+    <mat-tab label="Credit Card Information">
+        <br>
+        <div class="row col-md-12">
+          <div class="col-md-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Credit Card Type</mat-label>
+              <input matInput type="text" placeholder=" Credit Card Type" formControlName="creditcardtype" required>
+              <mat-error *ngIf="registerationAddForm.controls['creditcardtype'].hasError('required') && registerationAddForm.controls['creditcardtype'].touched">
+               Credit Card Type Required</mat-error>
+              <!-- <mat-hint>Hint</mat-hint> -->
+            </mat-form-field>
+          </div>
+          <div class="col-md-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Card Number</mat-label>
+                <input matInput type="number" placeholder="Card Number" formControlName="cardnumber" required>
+                <mat-error *ngIf="registerationAddForm.controls['cardnumber'].hasError('required') && registerationAddForm.controls['cardnumber'].touched">
+            Card Number Required</mat-error>
+                <!-- <mat-hint>Hint</mat-hint> -->
+              </mat-form-field>
+            </div>
+          <div class="col-md-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Expiry Date </mat-label>
+              <!-- <input matInput type="number" placeholder="Date Of Birth" formControlName="dob"> -->
+              <input matInput [matDatepicker]="picker4" placeholder="Expiry Date" formControlName="creditexpirydate">
+              <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="registerationAddForm.controls['creditexpirydate'].hasError('required') && registerationAddForm.controls['creditexpirydate'].touched">
+               Credit Expiry Date Required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+
+      </mat-tab>
+
+
+
+  </mat-tab-group>
+</form>
